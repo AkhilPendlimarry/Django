@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Todo Application</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <p><input type="text" name = "task" /> <button>Add</button></p>
+    </form>
+
+    {% for row in todos %}
+     <div>
+        {{row.task}}<a href="/deleteTodo/?id={{row.id}}">Delete</a>
+    </div>
+    {% endfor %}
+</body>
+</html>
