@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+</head>
+<body>
+    <div style="display: flex; justify-content:left; background-color: cadetblue;">
+        <h1>Shopping Site</h1>
+     <div style="display: flex; justify-content: center; align-items: start;">
+        {% if user.is_authenticated %} {{ user.username }}
+        <a href="/accounts/logout">Logout</a>
+        {% else %}
+        <a href="/accounts/login">Login</a>
+        {% endif %}
+     </div>
+    </div>
+    <div style="display: flex; justify-content: space-around; margin: 20px;">
+        {% for product in products %}
+            <div>
+                <div><img src="{{product.url}}" alt="image"></div>
+                
+                    <h2>{{product.name}}</h2>
+                    <p>{{product.desc}}</p>
+                    <p>{{product.price}}</p>
+                
+            </div>
+    
+        {% endfor %}
+    </div>
+</body>
+</html>
