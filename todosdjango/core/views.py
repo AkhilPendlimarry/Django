@@ -5,6 +5,9 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 
+from django.shortcuts import render
+
+
 # Create your views here.
 @login_required
 def todo(request):
@@ -46,3 +49,7 @@ def products(request):
     product = models.product.objects.all()
     data = {'products':product}
     return render(request, 'products.html', data)
+
+
+def base(request):
+    return render(request, 'base.html')

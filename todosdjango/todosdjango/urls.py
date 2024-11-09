@@ -21,9 +21,12 @@ from core import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-     path('accounts/logout/', views.logout_view),
-    path('', views.products),
+    path('accounts/logout/', views.logout_view),
+    path('', views.base),
+    path('products/', views.products),
     path('deleteTodo/', views.deleteTodo),
     path('accounts/', include("django.contrib.auth.urls")),
     path('signup/', views.signup),
+    path('', views.getData),
 ]
+
