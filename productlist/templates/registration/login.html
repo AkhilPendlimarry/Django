@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Login page</h1>
+    <form method="post">
+        {% csrf_token %} 
+        <!-- this is a token used to secure user details  -->
+        {{form.as_p}}
+        <!-- this is a in-built function in form renders Login form. It is part of django -->
+        <button type="submit">Login</button>
+    </form>
+    <p>New User <a href="/signup/">Register</a> here</p>
+
+{% endblock content %}

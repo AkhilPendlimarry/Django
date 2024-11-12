@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+      {% if user.is_authenticated %} {{ user.username }}
+        <a href="/accounts/logout">Logout</a>
+        {% else %}
+        <a href="/accounts/login">Login</a>
+        {% endif %}
+    
+    <div style="display: flex; justify-content: space-around; margin: 50px;">
+        {% for product in products %}
+            <div>
+                <div><img src="{{product.url}}" alt="image"></div>
+                
+                    <h2>{{product.name}}</h2>
+                    <p>{{product.desc}}</p>
+                    <p>{{product.price}}</p>
+                
+            </div>
+    
+        {% endfor %}
+    </div>
+
+{% endblock content %}
