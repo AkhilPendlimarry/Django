@@ -28,6 +28,10 @@ def deleteTodo(request):
     
     return todo(request)
 
+def logout_view(request):
+    logout(request)
+    return todo(request)
+
 
 def signup(request):
     if request.method == "POST":
@@ -39,17 +43,3 @@ def signup(request):
         form = UserCreationForm()
     context = {'form': form}
     return render(request, 'signup.html', context)
-
-def logout_view(request):
-    logout(request)
-    return todo(request)
-
-@login_required
-def products(request):
-    product = models.product.objects.all()
-    data = {'products':product}
-    return render(request, 'products.html', data)
-
-
-def base(request):
-    return render(request, 'base.html')
