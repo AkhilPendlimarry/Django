@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'core',
+    'api',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -123,5 +125,7 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-LOGIN_REDIRECT_URL="/"
+LOGIN_REDIRECT_URL="/products"   
+# redirects to home after a user is successful logged in
 LOGIN_URL = "/accounts/login/"
+# redirects to login page if authentication is required.

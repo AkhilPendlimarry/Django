@@ -20,7 +20,6 @@ def base(request):
     return render(request, 'base.html')
 
 
-
 def logout_view(request):
     logout(request)
     return products(request)
