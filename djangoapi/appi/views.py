@@ -2,17 +2,20 @@ from django.shortcuts import render
 
 # Create your views here.
 from rest_framework.response import Response
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
 from rest_framework.views import APIView
 from appi.models import product
 from rest_framework import status
 from django.http import Http404
 from .serializers import ProductSerializer
+from rest_framework.permissions import IsAuthenticated
 
-@api_view()
-def getData(request):
-    return Response({"message":"Hello World"})
+# @api_view()
+# @permission_classes((IsAuthenticated,))
+# def getData(request):
+#     return Response({"message":"Hello World"})
 
+@permission_classes((IsAuthenticated,))
 class ProductList(APIView):
     def get(self,request):
         products = product.objects.all()
@@ -25,7 +28,7 @@ class ProductList(APIView):
             return Response(serializer.data,status=200)
         return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
         
-
+@permission_classes((IsAuthenticated,))
 class ProductDetail(APIView):
     def get_object(self, pk):
         try:
